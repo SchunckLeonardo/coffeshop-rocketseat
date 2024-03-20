@@ -37,12 +37,30 @@ export const Localization = styled.div`
 `
 
 export const Cart = styled.div`
+  position: relative;
   border-radius: 6px;
   padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${(p) => p.theme['yellow-100']};
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: ${(p) => p.theme['yellow-500']};
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${(p) => p.theme.white};
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
 
   svg {
     color: ${(p) => p.theme['yellow-500']};

@@ -15,6 +15,7 @@ export function Header() {
         </Localization>
         <Cart>
           <ShoppingCart weight="fill" size={22} />
+          <span>3</span>
         </Cart>
       </LinksNavigation>
     </HeaderContainer>
