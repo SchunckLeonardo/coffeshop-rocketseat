@@ -8,6 +8,7 @@ export const IntroductionSection = styled.section`
   align-items: center;
   width: 100vw;
   padding: 5.875rem 10rem;
+  height: 40rem;
   overflow: hidden;
   background: url(${BackgroundImage}) no-repeat;
   background-position: 50% 50%;
@@ -94,4 +95,22 @@ export const BoxIcon = styled.span<BoxIconProps>`
       return p.theme['purple-500']
     }
   }};
+`
+
+export const CoffeeSection = styled.section`
+  padding: 2rem 10rem;
+  padding-bottom: 15rem;
+
+  h4 {
+    font-family: 'Baloo 2';
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 3.4375rem;
+  }
+`
+
+export const CoffeeGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 256px);
+  gap: 5%;
 `

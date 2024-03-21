@@ -1,10 +1,14 @@
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
 
 import CoffeeIntroduction from '../../assets/coffee-introduction.svg'
+import { CardCoffee } from '../../components/CardCoffee'
+import { coffees } from '../../utils/coffee-data'
 import {
   BoxIcon,
   Capacities,
   CapacityBox,
+  CoffeeGrid,
+  CoffeeSection,
   FigureIntroduction,
   IntroductionSection,
   TextIntroduction,
@@ -54,7 +58,14 @@ export function Home() {
           <img src={CoffeeIntroduction} alt="Copo de café com grãos em volta" />
         </FigureIntroduction>
       </IntroductionSection>
-      <section></section>
+      <CoffeeSection>
+        <h4>Nossos cafés</h4>
+        <CoffeeGrid>
+          {coffees.map((coffee, i) => {
+            return <CardCoffee key={i} {...coffee} />
+          })}
+        </CoffeeGrid>
+      </CoffeeSection>
     </main>
   )
 }

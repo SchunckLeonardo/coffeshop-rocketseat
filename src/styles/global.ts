@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${(p) => p.theme.background};
+    overflow-x: hidden;
   }
 
   body, button, input-security {
