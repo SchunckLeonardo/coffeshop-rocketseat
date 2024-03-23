@@ -1,4 +1,5 @@
 import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react'
+import { useState } from 'react'
 
 import {
   ButtonShoppingCart,
@@ -15,6 +16,8 @@ interface CardCoffeeProps {
   name: string
   tags: string[]
   description: string
+  onClick: () => void
+  handleAddQntCoffee: (qnt: number) => void
 }
 
 export function CardCoffee({
@@ -22,7 +25,11 @@ export function CardCoffee({
   image,
   tags,
   name,
+  onClick,
+  handleAddQntCoffee,
 }: CardCoffeeProps) {
+  const [qnt, setQnt] = useState(1)
+
   return (
     <CardCoffeeContainer>
       <figure>
@@ -44,11 +51,28 @@ export function CardCoffee({
         </h5>
         <QuantityAndCart>
           <Quantity>
-            <Minus size={14} weight="bold" />
-            <p>1</p>
-            <Plus size={14} weight="bold" />
+            <Minus
+              onClick={() => {
+                qnt > 1 ? setQnt(qnt - 1) : setQnt(1)
+              }}
+              size={14}
+              weight="bold"
+            />
+            <p>{qnt}</p>
+            <Plus
+              onClick={() => {
+                qnt < 10 ? setQnt(qnt + 1) : setQnt(10)
+              }}
+              size={14}
+              weight="bold"
+            />
           </Quantity>
-          <ButtonShoppingCart>
+          <ButtonShoppingCart
+            onClick={() => {
+              handleAddQntCoffee(qnt)
+              onClick()
+            }}
+          >
             <ShoppingCart size={22} weight="fill" />
           </ButtonShoppingCart>
         </QuantityAndCart>

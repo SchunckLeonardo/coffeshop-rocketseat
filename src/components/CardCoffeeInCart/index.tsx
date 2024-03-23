@@ -1,20 +1,25 @@
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
 
-import ExpressoTradicional from '../../assets/coffee-expresso.png'
 import { Quantity } from '../CardCoffee/styles'
 import { CoffeeCardInCheck, QuantityAndDelete } from './styles'
 
-export function CardCoffeeInCart() {
+interface CardCoffeeInCartProps {
+  name: string
+  image: string
+  qnt: number
+}
+
+export function CardCoffeeInCart({ name, image, qnt }: CardCoffeeInCartProps) {
   return (
     <CoffeeCardInCheck>
       <div className="info">
-        <img src={ExpressoTradicional} alt="" />
+        <img src={image} alt="" />
         <div className="coffee-name">
-          <h5>Expresso Tradicional</h5>
+          <h5>{name}</h5>
           <QuantityAndDelete>
             <Quantity>
               <Minus size={14} weight="bold" />
-              <p>1</p>
+              <p>{qnt}</p>
               <Plus size={14} weight="bold" />
             </Quantity>
             <div className="delete">

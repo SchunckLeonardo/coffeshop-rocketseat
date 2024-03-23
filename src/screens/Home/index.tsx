@@ -1,7 +1,9 @@
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
+import { useContext } from 'react'
 
 import CoffeeIntroduction from '../../assets/coffee-introduction.svg'
 import { CardCoffee } from '../../components/CardCoffee'
+import { CoffeeContext } from '../../context/CoffeeContext'
 import { coffees } from '../../utils/coffee-data'
 import {
   BoxIcon,
@@ -16,6 +18,14 @@ import {
 } from './styles'
 
 export function Home() {
+  const { addCoffeeInCart } = useContext(CoffeeContext)
+  let coffeesQnt = 0
+
+  const handleAddQntCoffee = (qnt: number) => {
+    coffeesQnt = qnt
+    console.log(coffeesQnt)
+  }
+
   return (
     <main>
       <IntroductionSection>
@@ -62,7 +72,14 @@ export function Home() {
         <h4>Nossos cafés</h4>
         <CoffeeGrid>
           {coffees.map((coffee, i) => {
-            return <CardCoffee key={i} {...coffee} />
+            return (
+              <CardCoffee
+                onClick={() => addCoffeeInCart(i, coffeesQnt)}
+                key={i}
+                {...coffee}
+                handleAddQntCoffee={handleAddQntCoffee}
+              />
+            )
           })}
         </CoffeeGrid>
       </CoffeeSection>

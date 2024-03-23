@@ -6,8 +6,10 @@ import {
   Money,
 } from '@phosphor-icons/react'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
+import { useContext } from 'react'
 
 import { CardCoffeeInCart } from '../../components/CardCoffeeInCart'
+import { CoffeeContext } from '../../context/CoffeeContext'
 import {
   BaseInput,
   ButtonConfirmOrder,
@@ -23,6 +25,8 @@ import {
 } from './styles'
 
 export function Checkout() {
+  const { coffeesCart } = useContext(CoffeeContext)
+
   return (
     <MainContainerCheckout>
       <SectionCheckoutFill>
@@ -85,7 +89,16 @@ export function Checkout() {
       <CoffeeInCart>
         <h3>Cafés selecionados</h3>
         <section>
-          <CardCoffeeInCart />
+          {coffeesCart.map((coffee, i) => {
+            return (
+              <CardCoffeeInCart
+                key={i}
+                image={coffee.image}
+                name={coffee.name}
+                qnt={coffee.qnt}
+              />
+            )
+          })}
           <TotalPrice>
             <div className="tax">
               <p>Total de itens</p>

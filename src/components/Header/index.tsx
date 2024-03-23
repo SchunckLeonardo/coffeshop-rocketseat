@@ -1,10 +1,14 @@
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import logoCoffeShop from '../../assets/logo-coffeshop.svg'
+import { CoffeeContext } from '../../context/CoffeeContext'
 import { Cart, HeaderContainer, LinksNavigation, Localization } from './styles'
 
 export function Header() {
+  const { coffeesCart } = useContext(CoffeeContext)
+
   const navigate = useNavigate()
 
   return (
@@ -20,7 +24,7 @@ export function Header() {
         </Localization>
         <Cart onClick={() => navigate('/checkout')}>
           <ShoppingCart weight="fill" size={22} />
-          <span>3</span>
+          <span>{coffeesCart.length === 0 ? 0 : coffeesCart.length}</span>
         </Cart>
       </LinksNavigation>
     </HeaderContainer>
