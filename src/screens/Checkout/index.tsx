@@ -3,26 +3,20 @@ import {
   CreditCard,
   CurrencyDollar,
   MapPinLine,
-  Minus,
   Money,
-  Plus,
-  Trash,
 } from '@phosphor-icons/react'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
-import ExpressoTradicional from '../../assets/coffee-expresso.png'
-import { Quantity } from '../../components/CardCoffee/styles'
+import { CardCoffeeInCart } from '../../components/CardCoffeeInCart'
 import {
   BaseInput,
   ButtonConfirmOrder,
-  CoffeeCardInCheck,
   CoffeeInCart,
   FormBox,
   LabelBox,
   MainContainerCheckout,
   Payment,
   PaymentBox,
-  QuantityAndDelete,
   SectionCheckoutFill,
   ToggleGroupRoot,
   TotalPrice,
@@ -91,26 +85,7 @@ export function Checkout() {
       <CoffeeInCart>
         <h3>Cafés selecionados</h3>
         <section>
-          <CoffeeCardInCheck>
-            <div className="info">
-              <img src={ExpressoTradicional} alt="" />
-              <div className="coffee-name">
-                <h5>Expresso Tradicional</h5>
-                <QuantityAndDelete>
-                  <Quantity>
-                    <Minus size={14} weight="bold" />
-                    <p>1</p>
-                    <Plus size={14} weight="bold" />
-                  </Quantity>
-                  <div className="delete">
-                    <Trash size={16} />
-                    Remover
-                  </div>
-                </QuantityAndDelete>
-              </div>
-            </div>
-            <p className="price">R$ 9,90</p>
-          </CoffeeCardInCheck>
+          <CardCoffeeInCart />
           <TotalPrice>
             <div className="tax">
               <p>Total de itens</p>
