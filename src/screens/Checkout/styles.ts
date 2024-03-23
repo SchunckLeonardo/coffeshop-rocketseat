@@ -1,3 +1,4 @@
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import styled from 'styled-components'
 
 export const MainContainerCheckout = styled.main`
@@ -120,34 +121,34 @@ export const PaymentBox = styled.section`
   border-radius: 6px;
 `
 
-export const PaymentsMethods = styled.footer`
+export const ToggleGroupRoot = styled(ToggleGroup.Root)`
   display: flex;
   justify-content: stretch;
   align-items: center;
   gap: 0.75rem;
 `
 
-interface PaymentProps {
-  active?: boolean
-}
-
-export const Payment = styled.div<PaymentProps>`
+export const Payment = styled.div`
   width: 35%;
   padding: 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-radius: 6px;
-  border: 1px solid ${(p) => (p.active ? p.theme['purple-500'] : 'transparent')};
-  background: ${(p) =>
-    p.active ? p.theme['purple-100'] : p.theme['base-button']};
+  border: 1px solid transparent;
+  background: ${(p) => p.theme['base-button']};
   gap: 0.75rem;
   text-transform: uppercase;
   font-size: 0.9rem;
   font-weight: 400;
   cursor: pointer;
 
-  &:hover {
+  &[data-state='on'] {
+    border: 1px solid ${(p) => p.theme['purple-500']};
+    background: ${(p) => p.theme['purple-100']};
+  }
+
+  &:not(&[data-state='on']):hover {
     background-color: ${(p) => p.theme['base-hover']};
   }
 

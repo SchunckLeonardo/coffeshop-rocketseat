@@ -8,6 +8,7 @@ import {
   Plus,
   Trash,
 } from '@phosphor-icons/react'
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
 import ExpressoTradicional from '../../assets/coffee-expresso.png'
 import { Quantity } from '../../components/CardCoffee/styles'
@@ -21,9 +22,9 @@ import {
   MainContainerCheckout,
   Payment,
   PaymentBox,
-  PaymentsMethods,
   QuantityAndDelete,
   SectionCheckoutFill,
+  ToggleGroupRoot,
   TotalPrice,
 } from './styles'
 
@@ -65,20 +66,26 @@ export function Checkout() {
               </p>
             </div>
           </LabelBox>
-          <PaymentsMethods>
-            <Payment>
-              <CreditCard size={16} />
-              Cartão de Crédito
-            </Payment>
-            <Payment>
-              <Bank size={16} />
-              Cartão de Débito
-            </Payment>
-            <Payment>
-              <Money size={16} />
-              Dinheiro
-            </Payment>
-          </PaymentsMethods>
+          <ToggleGroupRoot type="single">
+            <ToggleGroup.Item value="credit" asChild>
+              <Payment>
+                <CreditCard size={16} />
+                Cartão de Crédito
+              </Payment>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value="debit" asChild>
+              <Payment>
+                <Bank size={16} />
+                Cartão de Débito
+              </Payment>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value="money" asChild>
+              <Payment>
+                <Money size={16} />
+                Dinheiro
+              </Payment>
+            </ToggleGroup.Item>
+          </ToggleGroupRoot>
         </PaymentBox>
       </SectionCheckoutFill>
       <CoffeeInCart>
