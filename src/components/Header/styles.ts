@@ -7,6 +7,10 @@ export const HeaderContainer = styled.header`
   width: 100vw;
   height: 104px;
   padding: 2rem 10rem;
+
+  figure {
+    cursor: pointer;
+  }
 `
 
 export const LinksNavigation = styled.div`
