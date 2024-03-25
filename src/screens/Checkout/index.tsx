@@ -6,10 +6,10 @@ import {
   Money,
 } from '@phosphor-icons/react'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import { useContext } from 'react'
 
 import { CardCoffeeInCart } from '../../components/CardCoffeeInCart'
-import { CoffeeContext } from '../../context/CoffeeContext'
+import { useCart } from '../../hooks/useCart'
+import { formatMoney } from '../../utils/formatMoney'
 import {
   BaseInput,
   ButtonConfirmOrder,
@@ -24,8 +24,10 @@ import {
   TotalPrice,
 } from './styles'
 
+const PRICE_TAX_DELIVERING = 3.5
+
 export function Checkout() {
-  const { coffeesCart } = useContext(CoffeeContext)
+  const { cartItems, totalPriceInCartItems } = useCart()
 
   return (
     <MainContainerCheckout>
@@ -89,28 +91,23 @@ export function Checkout() {
       <CoffeeInCart>
         <h3>Cafés selecionados</h3>
         <section>
-          {coffeesCart.map((coffee, i) => {
-            return (
-              <CardCoffeeInCart
-                key={i}
-                image={coffee.image}
-                name={coffee.name}
-                qnt={coffee.qnt}
-              />
-            )
+          {cartItems.map((coffee) => {
+            return <CardCoffeeInCart key={coffee.id} coffee={coffee} />
           })}
           <TotalPrice>
             <div className="tax">
               <p>Total de itens</p>
-              <p>R$ 29,70</p>
+              <p>R$ {formatMoney(totalPriceInCartItems)}</p>
             </div>
             <div className="tax">
               <p>Entrega</p>
-              <p>R$ 3,50</p>
+              <p>R$ {formatMoney(PRICE_TAX_DELIVERING)}</p>
             </div>
             <div className="total">
               <p>Total</p>
-              <p>R$ 33,20</p>
+              <p>
+                R$ {formatMoney(PRICE_TAX_DELIVERING + totalPriceInCartItems)}
+              </p>
             </div>
           </TotalPrice>
           <ButtonConfirmOrder>Confirmar Pedido</ButtonConfirmOrder>

@@ -94,32 +94,6 @@ export const QuantityAndCart = styled.div`
   width: 30%;
 `
 
-export const Quantity = styled.div`
-  padding: 0.5rem;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
-  border-radius: 6px;
-  background: ${(p) => p.theme['base-button']};
-  text-align: center;
-
-  p {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  svg {
-    color: ${(p) => p.theme['purple-500']};
-    cursor: pointer;
-
-    &:hover {
-      color: ${(p) => p.theme['purple-800']};
-    }
-  }
-`
-
 export const ButtonShoppingCart = styled.span`
   padding: 8px;
   display: flex;

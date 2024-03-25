@@ -55,16 +55,17 @@ export const Capacities = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 100%;
   gap: 2.5rem;
   flex-wrap: wrap;
 `
 
 export const CapacityBox = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 0.75rem;
+  width: 300px;
 
   p {
     font-size: 1rem;
