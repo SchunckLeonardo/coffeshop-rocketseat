@@ -15,11 +15,11 @@ export function AddOrRemoveQnt({
 }: AddOrRemoveQntProps) {
   return (
     <Quantity>
-      <IconWrapper disabled={qnt <= 1} onClick={onDecrease}>
+      <IconWrapper type="button" disabled={qnt <= 1} onClick={onDecrease}>
         <Minus size={14} weight="bold" />
       </IconWrapper>
       <p>{qnt}</p>
-      <IconWrapper onClick={onIncrease}>
+      <IconWrapper type="button" onClick={onIncrease}>
         <Plus size={14} weight="bold" />
       </IconWrapper>
     </Quantity>

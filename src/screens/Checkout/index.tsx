@@ -46,7 +46,12 @@ export type OrderData = z.infer<typeof confirmOrderFormValidationSchema>
 type ConfirmOrderFormData = OrderData
 
 export function Checkout() {
-  const { cartItems, totalPriceInCartItems, removeAllItensInCart } = useCart()
+  const {
+    cartItems,
+    totalPriceInCartItems,
+    removeAllItensInCart,
+    cartQuantityItems,
+  } = useCart()
   const navigate = useNavigate()
 
   const confirmOrderForm = useForm<ConfirmOrderFormData>({
@@ -201,7 +206,10 @@ export function Checkout() {
                 </p>
               </div>
             </TotalPrice>
-            <ButtonConfirmOrder type="submit" disabled={isSubmitting}>
+            <ButtonConfirmOrder
+              type="submit"
+              disabled={isSubmitting || cartQuantityItems <= 0}
+            >
               Confirmar Pedido
             </ButtonConfirmOrder>
           </section>

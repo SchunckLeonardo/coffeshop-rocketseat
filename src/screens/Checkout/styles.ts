@@ -228,7 +228,7 @@ export const ButtonConfirmOrder = styled.button`
   transition: 0.1s;
   cursor: pointer;
 
-  &:hover {
+  &:not(&:disabled):hover {
     background: ${(p) => p.theme['yellow-800']};
   }
 `
