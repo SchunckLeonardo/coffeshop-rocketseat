@@ -17,6 +17,7 @@ interface CartContextType {
   ) => void
   totalPriceInCartItems: number
   removeCoffeeInCartItems: (coffee: CartItems) => void
+  removeAllItensInCart: () => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -38,6 +39,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   })
 
   const cartQuantityItems = cartItems.length
+
+  const removeAllItensInCart = () => {
+    setCartItems([])
+  }
 
   const removeCoffeeInCartItems = (coffee: CartItems) => {
     const coffeeAlreadyExistsInCartItems = cartItems.findIndex(
@@ -105,6 +110,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         updateQuantityInCartItems,
         totalPriceInCartItems,
         removeCoffeeInCartItems,
+        removeAllItensInCart,
       }}
     >
       {children}

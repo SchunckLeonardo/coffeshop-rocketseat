@@ -1,13 +1,23 @@
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
+import { useLocation } from 'react-router-dom'
 
 import Illustration from '../../assets/delivering.svg'
+import { OrderData } from '../Checkout'
 import {
   InfosDeliver,
   MainContainerSuccess,
   SectionInfoDelivering,
 } from './styles'
 
+interface LocationType {
+  state?: OrderData
+}
+
 export function Success() {
+  const { state } = useLocation() as unknown as LocationType
+
+  const paymentMethod = state?.paymentMethod
+
   return (
     <MainContainerSuccess>
       <div className="title">
@@ -21,8 +31,11 @@ export function Success() {
               <MapPin size={16} weight="fill" />
             </span>
             <h4>
-              Entrega em <span>Rua João Daniel Martinelli, 102</span>
-              <br /> Farrapos - Porto Alegre, RS
+              Entrega em{' '}
+              <span>
+                {state?.street}, {state?.number}
+              </span>
+              <br /> {state?.district} - {state?.city}, {state?.state}
             </h4>
           </InfosDeliver>
           <InfosDeliver variant="yellow">
@@ -40,7 +53,13 @@ export function Success() {
             </span>
             <div>
               <h4>Pagamento na entrega</h4>
-              <p>Cartão de Crédito</p>
+              <p>
+                {paymentMethod === 'credit'
+                  ? 'Cartão de crédito'
+                  : paymentMethod === 'debit'
+                    ? 'Cartão de débito'
+                    : 'Dinheiro'}
+              </p>
             </div>
           </InfosDeliver>
         </div>

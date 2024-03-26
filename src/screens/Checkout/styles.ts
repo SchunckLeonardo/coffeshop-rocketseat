@@ -2,27 +2,13 @@ import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import styled from 'styled-components'
 
 export const MainContainerCheckout = styled.main`
-  padding: 2rem 10rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-`
-
-export const SectionCheckoutFill = styled.section`
   display: flex;
   flex-direction: column;
   width: 50%;
   gap: 0.9375rem;
-
-  .title {
-    font-family: 'Baloo 2';
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: ${(p) => p.theme['base-subtitle']};
-  }
 `
 
-export const FormBox = styled.form`
+export const SectionCheckoutFill = styled.section`
   width: 100%;
   border-radius: 6px;
   background: ${(p) => p.theme['base-card']};
@@ -30,6 +16,26 @@ export const FormBox = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  .error {
+    font-size: 0.9rem;
+    color: red;
+    font-weight: 500;
+  }
+`
+
+export const FormBox = styled.form`
+  padding: 2rem 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .title {
+    font-family: 'Baloo 2';
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: ${(p) => p.theme['base-subtitle']};
+  }
 
   .inputDiv {
     display: flex;
